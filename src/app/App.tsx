@@ -16,9 +16,11 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Menu from './Menu/Menu';
 import {Section} from './common/Section';
+import {useTheme} from 'react-native-paper';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const theme = useTheme();
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -34,10 +36,7 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         {/* <Header /> */}
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+        <View>
           <Section title="Hello">Vamsi</Section>
           <Menu />
         </View>

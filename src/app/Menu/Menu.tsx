@@ -8,23 +8,26 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {Button} from 'react-native-paper';
 
-import {
-  Colors
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const styles = StyleSheet.create({
-    sectionContainer: {
-      marginTop: 32,
-      paddingHorizontal: 24,
-    },
-  });
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+  },
+});
 
 function Menu(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  const onTouch = (e: any) => {
+    console.log('Pressed: ', e);
   };
 
   return (
@@ -40,9 +43,15 @@ function Menu(): React.JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Text style={styles.sectionContainer}>
-            This is menu section
-          </Text>
+          <Text style={styles.sectionContainer}>This is menu section</Text>
+          <View>
+            <Button
+              icon="camera"
+              mode="contained"
+              onPress={() => onTouch('touched')}>
+              Press me
+            </Button>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
